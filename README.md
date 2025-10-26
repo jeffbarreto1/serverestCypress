@@ -73,4 +73,4 @@ O workflow é acionado automaticamente nos seguintes eventos:
 
 3. Pull Request: Executa em toda abertura ou atualização de Pull Request apontado para a branch main (para garantir que novas alterações não quebram os testes).
 
-Após a execução em eventos da branch main ou no agendamento, o workflow publica o relatório final do Mochawesome (com vídeos e screenshots) no GitHub Pages.
+Após a execução em eventos da branch main ou no agendamento, o workflow publica o relatório final do Mochawesome (com vídeos e screenshots) no GitHub Pages (```https://jeffbarreto1.github.io/serverestCypress/```) .
