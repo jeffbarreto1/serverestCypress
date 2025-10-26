@@ -60,3 +60,17 @@ Abra o arquivo:
 ```bash
 cypress/reports/mochawesome/index.html
 ```
+
+## 🤖 Automação & CI/CD (GitHub Actions)
+
+Este repositório utiliza um workflow de CI/CD (```.github/workflows/ci.yml```) para automatizar a execução dos testes.
+
+O workflow é acionado automaticamente nos seguintes eventos:
+
+1. Diariamente (Agendado): Executa todos os dias às 7:00 (Horário de Brasília / 10:00 UTC).
+
+2. Push na main: Executa a cada push ou merge na branch principal (main).
+
+3. Pull Request: Executa em toda abertura ou atualização de Pull Request apontado para a branch main (para garantir que novas alterações não quebram os testes).
+
+Após a execução em eventos da branch main ou no agendamento, o workflow publica o relatório final do Mochawesome (com vídeos e screenshots) no GitHub Pages (```https://jeffbarreto1.github.io/serverestCypress/```) .
