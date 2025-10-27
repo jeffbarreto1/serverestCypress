@@ -43,7 +43,7 @@ Para abrir a interface gráfica do Cypress, executar testes individualmente e ve
 npx cypress open
 ```
 
-### 1. Modo Headless (Cypress Run)
+### 2. Modo Headless (Cypress Run)
 
 Para executar todos os testes em segundo plano (ideal para CI/CD) e gerar o relatório de testes:
 
