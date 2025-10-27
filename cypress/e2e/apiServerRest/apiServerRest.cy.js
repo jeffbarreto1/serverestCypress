@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-import { dataUser } from '../../support/utils/dataUser';
-import { faker } from '@faker-js/faker';
+import { dataUser } from '../../support/utils/dataUser'
+import { faker } from '@faker-js/faker'
 
 describe('API Tests - /produtos Endpoint', () => {
 
@@ -23,8 +23,8 @@ describe('API Tests - /produtos Endpoint', () => {
         "password": userAdmin.password
       }
     }).then((loginResponse) => {
-      expect(loginResponse.status).to.eq(200);
-      adminToken = loginResponse.body.authorization; // Save token
+      expect(loginResponse.status).to.eq(200)
+      adminToken = loginResponse.body.authorization // Save token
     });
   });
 
@@ -38,16 +38,16 @@ describe('API Tests - /produtos Endpoint', () => {
         
         // Response Assertions
         expect(response.status).to.eq(200);
-        expect(response.body).to.have.property('quantidade');
-        expect(response.body.produtos).to.be.an('array');
-        expect(response.body.produtos).to.have.length.greaterThan(0);
+        expect(response.body).to.have.property('quantidade')
+        expect(response.body.produtos).to.be.an('array')
+        expect(response.body.produtos).to.have.length.greaterThan(0)
 
         // Product Assertions
-        const firstProduct = response.body.produtos[0];
-        expect(firstProduct).to.have.all.keys('nome', 'preco', 'descricao', 'quantidade', '_id');
+        const firstProduct = response.body.produtos[0]
+        expect(firstProduct).to.have.all.keys('nome', 'preco', 'descricao', 'quantidade', '_id')
 
         // Saves a product ID to use in further tests
-        createdProductId = firstProduct._id;
+        createdProductId = firstProduct._id
       });
     });
   });
@@ -65,8 +65,8 @@ describe('API Tests - /produtos Endpoint', () => {
         
         // Response Assertions
         expect(response.status).to.eq(200);
-        expect(response.body._id).to.eq(createdProductId);
-        expect(response.body).to.have.all.keys('nome', 'preco', 'descricao', 'quantidade', '_id');
+        expect(response.body._id).to.eq(createdProductId)
+        expect(response.body).to.have.all.keys('nome', 'preco', 'descricao', 'quantidade', '_id')
       });
     });
 
@@ -79,7 +79,7 @@ describe('API Tests - /produtos Endpoint', () => {
         
         // Response Assertions
         expect(response.status).to.eq(400);
-        expect(response.body.id).to.eq('id deve ter exatamente 16 caracteres alfanuméricos');
+        expect(response.body.id).to.eq('id deve ter exatamente 16 caracteres alfanuméricos')
       });
     });
   });
@@ -124,7 +124,7 @@ describe('API Tests - /produtos Endpoint', () => {
         
         // Response Assertions
         expect(response.status).to.eq(200);
-        expect(response.body.message).to.eq('Registro excluído com sucesso');
+        expect(response.body.message).to.eq('Registro excluído com sucesso')
       });
     });
 
@@ -138,7 +138,7 @@ describe('API Tests - /produtos Endpoint', () => {
         
         // Asserções da Resposta
         expect(response.status).to.eq(401);
-        expect(response.body.message).to.contain('Token de acesso ausente');
+        expect(response.body.message).to.contain('Token de acesso ausente')
       });
     });
 
@@ -155,8 +155,8 @@ describe('API Tests - /produtos Endpoint', () => {
               "password": userCommon.password
             }
           }).then((loginResponse) => {
-            expect(loginResponse.status).to.eq(200);
-            commonUserToken = loginResponse.body.authorization; // Save token
+            expect(loginResponse.status).to.eq(200)
+            commonUserToken = loginResponse.body.authorization // Save token
 
             // Attempts to delete the product with the common token
             cy.request({
@@ -168,7 +168,7 @@ describe('API Tests - /produtos Endpoint', () => {
               failOnStatusCode: false
             }).then((deleteResponse) => {
               expect(deleteResponse.status).to.eq(403);
-              expect(deleteResponse.body.message).to.eq('Rota exclusiva para administradores');
+              expect(deleteResponse.body.message).to.eq('Rota exclusiva para administradores')
             });
           });
         });
